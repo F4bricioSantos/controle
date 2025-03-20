@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle HC-05 - Direção e Aceleração</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 90vw;
+            max-width: 600px;
+            gap: 5vw;
+        }
+        .joystick-area {
+            width: 40vw;
+            height: 40vw;
+            max-width: 200px;
+            max-height: 200px;
+            background: #ddd;
+            border-radius: 20px;
+            position: relative;
+            touch-action: none;
+        }
+        .stick {
+            background: #4CAF50;
+            border-radius: 50%;
+            position: absolute;
+            cursor: grab;
+        }
+        #directionStick, #speedStick {
+            width: 12vw;
+            height: 12vw;
+            max-width: 60px;
+            max-height: 60px;
+            top: calc(50% - 6vw);
+            left: calc(50% - 6vw);
+        }
+        .info {
+            text-align: center;
+            margin-top: 1vh;
+            font-size: 3vw;
+        }
+        button {
+            position: fixed;
+            top: 1vh;
+            left: 1vw;
+            padding: 2vw 4vw;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 3vw;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                gap: 5vh;
+            }
+            .joystick-area {
+                width: 50vw;
+                height: 50vw;
+            }
+            #directionStick, #speedStick {
+                width: 15vw;
+                height: 15vw;
+                top: calc(50% - 7.5vw);
+                left: calc(50% - 7.5vw);
+            }
+            .info {
+                font-size: 4vw;
+            }
+            button {
+                padding: 2vw 5vw;
+                font-size: 4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button onclick="connectBluetooth()">Conectar HC-05</button>
+    <div class="container">
+        <div>
+            <div id="directionJoystick" class="joystick-area">
+                <div id="directionStick" class="stick"></div>
+            </div>
+            <div class="info" id="directionInfo">Direção: D90</div>
+        </div>
+        <div>
+            <div id="speedJoystick" class="joystick-area">
+                <div id="speedStick" class="stick"></div>
+            </div>
+            <div class="info" id="speedInfo">Aceleração: G0</div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
